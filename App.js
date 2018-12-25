@@ -10,6 +10,7 @@ import {
 } from 'react-native'
 import SearchInput from './src/components/SearchInput'
 import { fetchLocationId, fetchWeather } from './src/utils/api'
+import getWeatherImage from './src/utils/getWeatherImage'
 
 export default class App extends React.Component {
   state = { 
@@ -64,12 +65,12 @@ export default class App extends React.Component {
         behavior="padding"
       >
         <ImageBackground
-          source={require('./assets/bg/clear.png')}
+          source={getWeatherImage( weather )}
           style={styles.imageContainer}
         >
         {
           loading 
-            ? <ActivityIndicator color="#4a4a4a" size="large"/>
+            ? <ActivityIndicator color="white" size="large"/>
             : (error 
                 ? <Text style={[styles.smallText, styles.textStyle]}>
                     Could not load weather, please try a different
@@ -114,7 +115,7 @@ const styles = StyleSheet.create({
   textStyle: {
     textAlign: 'center',
     fontFamily: Platform.OS === 'ios' ? 'AvenirNext-Regular' : 'Roboto',
-    color: '#4a4a4a'
+    color: 'white'
   },
   imageContainer: {
     flex: 1,
