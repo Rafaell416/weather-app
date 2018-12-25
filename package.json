@@ -4,7 +4,8 @@
     "start": "expo start",
     "android": "expo start --android",
     "ios": "expo start --ios",
-    "eject": "expo eject"
+    "eject": "expo eject",
+    "push": "git push -u origin master"
   },
   "dependencies": {
     "expo": "^31.0.2",
