@@ -3,6 +3,7 @@ import {
   Text, 
   View,
   Platform, 
+  StatusBar,
   StyleSheet,
   ImageBackground,
   ActivityIndicator,
@@ -64,6 +65,7 @@ export default class App extends React.Component {
         style={styles.container}
         behavior="padding"
       >
+        <StatusBar barStyle="light-content" />
         <ImageBackground
           source={getWeatherImage( weather )}
           style={styles.imageContainer}
