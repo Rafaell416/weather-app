@@ -9,7 +9,19 @@ import {
 import SearchInput from './src/components/SearchInput'
 
 export default class App extends React.Component {
+  state = { text: '', location: '' }
+
+  _handleChnageLocation = text => this.setState({ text })
+
+  _handleSubmit = () => {
+    const { text } = this.state
+    if ( !text ) return
+
+    this.setState({ location: text, text: '' })
+  }
+
   render() {
+    const { text, location } = this.state
     return (
       <KeyboardAvoidingView 
         style={styles.container}
@@ -19,10 +31,16 @@ export default class App extends React.Component {
           source={require('./assets/bg/clear.png')}
           style={styles.imageContainer}
         >
-          <Text style={[styles.largeText, styles.textStyle]}>Barranquilla</Text>
+          <Text style={[styles.largeText, styles.textStyle]}>{ location }</Text>
           <Text style={[styles.smallText, styles.textStyle]}>Light Cloud</Text>
           <Text style={[styles.largeText, styles.textStyle]}>24º</Text>
-          <SearchInput placeholder="Search any city"/>
+
+          <SearchInput 
+            placeholder="Search any city"
+            handleChangeText={ this._handleChnageLocation }
+            value={ text }
+            onSubmit={ this._handleSubmit }
+          />
         </ImageBackground>
       </KeyboardAvoidingView>
     )
@@ -42,7 +60,8 @@ const styles = StyleSheet.create({
   },
   textStyle: {
     textAlign: 'center',
-    fontFamily: Platform.OS === 'ios' ? 'AvenirNext-Regular' : 'Roboto'
+    fontFamily: Platform.OS === 'ios' ? 'AvenirNext-Regular' : 'Roboto',
+    color: '#4a4a4a'
   },
   imageContainer: {
     flex: 1,

@@ -6,10 +6,13 @@ import {
 } from 'react-native'
 import PropTypes from 'prop-types'
 
-function SearchInput ({ placeholder }) {
+function SearchInput ({ placeholder, handleChangeText, value, onSubmit }) {
   return (
     <TextInput
       placeholder={ placeholder }
+      onChangeText={ handleChangeText }
+      value={ value }
+      onSubmitEditing={ onSubmit }
       style={ styles.textInput }
       placeholderTextColor='white'
       autoCorrect={ false }
@@ -22,8 +25,15 @@ function SearchInput ({ placeholder }) {
 }
 
 SearchInput.propTypes = {
-  placeholder: PropTypes.string.isRequired
+  placeholder: PropTypes.string.isRequired,
+  handleChangeText: PropTypes.func,
+  value: PropTypes.string,
+  onSubmit: PropTypes.func
 }
+
+SearchInput.defaultProps = {
+  placeholder: ''
+} 
 
 const styles = StyleSheet.create({
   textInput: {
