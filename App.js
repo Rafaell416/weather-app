@@ -1,12 +1,11 @@
 import React from 'react'
 import {
   Text, 
-  View,
   Platform, 
   StyleSheet,
-  TextInput,
   KeyboardAvoidingView
 } from 'react-native'
+import SearchInput from './src/components/SearchInput'
 
 export default class App extends React.Component {
   render() {
@@ -18,15 +17,7 @@ export default class App extends React.Component {
         <Text style={[styles.largeText, styles.textStyle]}>Barranquilla</Text>
         <Text style={[styles.smallText, styles.textStyle]}>Light Cloud</Text>
         <Text style={[styles.largeText, styles.textStyle]}>24º</Text>
-        <TextInput
-          placeholder="Search any city"
-          style={ styles.textInput }
-          placeholderTextColor='white'
-          autoCorrect={ false }
-          clearButtonMode="while-editing"
-          keyboardAppearance="dark"
-          returnKeyType="search"
-        />
+        <SearchInput placeholder="Search any city"/>
       </KeyboardAvoidingView>
     )
   }
@@ -48,21 +39,5 @@ const styles = StyleSheet.create({
   textStyle: {
     textAlign: 'center',
     fontFamily: Platform.OS === 'ios' ? 'AvenirNext-Regular' : 'Roboto'
-  },
-  textInput: {
-    height: 40,
-    width: 300,
-    marginTop: 20,
-    backgroundColor: '#bdc3c7',
-    paddingHorizontal: 10,
-    color: 'white',
-    alignSelf: 'center',
-    marginHorizontal: 20,
-    borderRadius: 5,
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 1 },
-    shadowOpacity: 0.8,
-    shadowRadius: 1,
-    elevation: 5,
   }
 })
