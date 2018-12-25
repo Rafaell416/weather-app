@@ -4,6 +4,7 @@ import {
   TextInput,
   StyleSheet
 } from 'react-native'
+import PropTypes from 'prop-types'
 
 function SearchInput ({ placeholder }) {
   return (
@@ -18,6 +19,10 @@ function SearchInput ({ placeholder }) {
       underlineColorAndroid="transparent"
     />
   )
+}
+
+SearchInput.propTypes = {
+  placeholder: PropTypes.string.isRequired
 }
 
 const styles = StyleSheet.create({

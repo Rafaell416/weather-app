@@ -3,6 +3,7 @@ import {
   Text, 
   Platform, 
   StyleSheet,
+  ImageBackground,
   KeyboardAvoidingView
 } from 'react-native'
 import SearchInput from './src/components/SearchInput'
@@ -14,10 +15,15 @@ export default class App extends React.Component {
         style={styles.container}
         behavior="padding"
       >
-        <Text style={[styles.largeText, styles.textStyle]}>Barranquilla</Text>
-        <Text style={[styles.smallText, styles.textStyle]}>Light Cloud</Text>
-        <Text style={[styles.largeText, styles.textStyle]}>24º</Text>
-        <SearchInput placeholder="Search any city"/>
+        <ImageBackground
+          source={require('./assets/bg/clear.png')}
+          style={styles.imageContainer}
+        >
+          <Text style={[styles.largeText, styles.textStyle]}>Barranquilla</Text>
+          <Text style={[styles.smallText, styles.textStyle]}>Light Cloud</Text>
+          <Text style={[styles.largeText, styles.textStyle]}>24º</Text>
+          <SearchInput placeholder="Search any city"/>
+        </ImageBackground>
       </KeyboardAvoidingView>
     )
   }
@@ -27,8 +33,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
   },
   largeText: {
     fontSize: 44,
@@ -39,5 +43,10 @@ const styles = StyleSheet.create({
   textStyle: {
     textAlign: 'center',
     fontFamily: Platform.OS === 'ios' ? 'AvenirNext-Regular' : 'Roboto'
+  },
+  imageContainer: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
   }
 })
