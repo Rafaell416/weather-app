@@ -83,7 +83,7 @@ export default class App extends React.Component {
                     { weather }
                   </Text>
                   <Text style={[styles.largeText, styles.textStyle]}>
-                    { temperature }º
+                    { Math.round(temperature) }º
                   </Text>
                 </View> 
               )
